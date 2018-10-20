@@ -1,0 +1,47 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: APIQL API
+  description: An API to create custom REST-like APIs from a graphQL API
+servers:
+  - url: http://localhost:8080/apiql
+paths:
+  /apiql/apis:
+    get:
+      description: Returns a list of APIs
+      operationId: listAPIs
+
+  /apiql/apis/{name}:
+    put:
+      description: Adds or updates an API
+      operationId: createOrUpdateAPI
+      parameters:
+      - name: name
+        in: path
+        description: name of the API
+        required: true
+        schema:
+          type: string
+    get:
+      description: Shows API. Supports conneg.
+      operationId: getAPI
+      parameters:
+      - name: name
+        in: path
+        description: name of the API
+        required: true
+        schema:
+          type: string
+    delete:
+      description: Shows API
+      operationId: deleteAPI
+      parameters:
+      - name: name
+        in: path
+        description: name of the API
+        required: true
+        schema:
+          type: string
+  /apiql/description:
+    get:
+      description: Shows the documentation for the apiql APIs.

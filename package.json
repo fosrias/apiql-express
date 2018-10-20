@@ -1,0 +1,30 @@
+{
+  "name": "apiql-express",
+  "version": "0.0.2",
+  "description": "A plugin to create custom REST resource APIs from GraphQL APIs",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fosrias/apiql-express"
+  },
+  "keywords": [
+    "API",
+    "REST",
+    "GraphQL"
+  ],
+  "author": "Mark W. Foster",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.6.1",
+    "body-parser": "^1.15.2",
+    "js-yaml": "^3.12.0",
+    "lodash": "^4.17.11",
+    "pug": "^2.0.3",
+    "redoc": "^2.0.0-alpha.40",
+    "request": "^2.88.0",
+    "urijs": "^1.19.1"
+  }
+}

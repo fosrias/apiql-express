@@ -1,0 +1,85 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Star Wars REST resource API
+  description: A sample API converting graphQL to ad hoc REST resource APIs
+servers:
+  - url: http://localhost:3000
+paths:
+  /droids/{id}:
+    get:
+      description: Returns a Droid
+      operationId: droidById
+      parameters:
+      - name: id
+        in: path
+        description: ID of a droid to fetch
+        required: true
+        schema:
+          type: integer
+          format: int64
+      x-graphqlQuery: |
+        query droidById($id: ID!) {  
+          droid(id: $id) {
+            name  
+          }
+        }
+      responses:
+        '200':
+          description: droid response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DroidData'
+
+  /episodes/{episode}/reviews:
+    post:
+      description: Adds a review to an episode
+      operationId: createReviewForEpisode
+      parameters:
+      - name: episode
+        in: path
+        description: Episode to add review to
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Review to add to Episode
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Review'
+      x-graphqlMutation: |
+        mutation createReviewForEpisode($episode: Episode!, $review: ReviewInput!) {  
+          createReview(episode: $episode, review: $review) {    
+            stars    
+            commentary  
+          }
+        }
+      responses:
+        '200':
+          description: review response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewData'
+
+# TODO finish this
+components:
+  schemas:
+    DroidData:
+      required:
+        - data
+      properties:
+        droid:
+
+    Droid: {
+
+    }
+
+    ReviewData:
+
+    Review:
+      required:
+        - review

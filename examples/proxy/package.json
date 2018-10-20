@@ -1,0 +1,16 @@
+{
+  "name": "apiql-express-proxy",
+  "private": true,
+  "version": "0.0.1",
+  "description": "A simple proxy to add REST resources in front of a GraphQL service",
+  "main": "app.js",
+  "author": "Mark W. Foster",
+  "license": "MIT",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "apiql-express": "0.0.2",
+    "express": "^4.16.4"
+  }
+}
