@@ -49,7 +49,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Review'
+              type: object
+              properties:
+                review:
+                  $ref: '#/components/schemas/Review'
       x-graphqlMutation: |
         mutation createReviewForEpisode($episode: Episode!, $review: ReviewInput!) {  
           createReview(episode: $episode, review: $review) {    
@@ -58,28 +61,46 @@ paths:
           }
         }
       responses:
-        '200':
+        '201':
           description: review response
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReviewData'
-
-# TODO finish this
+                
 components:
   schemas:
     DroidData:
-      required:
-        - data
+      type: object
       properties:
-        droid:
-
-    Droid: {
-
-    }
-
+        data:
+          type: object
+          properties:
+            droid:
+              $ref: '#/components/schemas/Droid'
+    Droid: 
+      type: object
+      properties:
+        name:
+          type: string
+          default: R2D2
     ReviewData:
-
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            createReview:
+              $ref: '#/components/schemas/Review'
     Review:
       required:
-        - review
+        - stars
+        - commentary
+      properties:
+        stars: 
+          type: integer
+          format: int64
+          default: 5
+        commentary:
+          type: string
+          default: Great movie!

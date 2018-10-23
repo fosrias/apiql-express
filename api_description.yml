@@ -22,6 +22,52 @@ paths:
         required: true
         schema:
           type: string
+      requestBody:
+        description: OpenAPI 3.0 API Description document
+        required: true
+        content:
+          application/openapi+json:
+            schema:
+              type: object
+            example: |
+              {
+                "openapi": "3.0.0",
+                "info": {
+                  "version": "1.0.0",
+                  "title": "Star Wars REST resource API",
+                  "description": "A sample API converting graphQL to ad hoc REST resource APIs"
+                },
+                "servers": [
+                  {
+                    "url": "http://localhost:3000"
+                  }
+                ],
+                "paths": {
+                    "/droids/{id}": {
+                      "get": {
+                          "description": "Returns a Droid"
+                      }
+                    }
+                  }
+                }       
+          application/openapi+yaml:
+              schema:
+                type: string
+              example: |
+                openapi: 3.0.0
+                info:
+                  version: 1.0.0
+                  title: Star Wars REST resource API
+                  description: A sample API converting graphQL to ad hoc REST resource APIs
+                servers:
+                  - url: 'http://localhost:3000'
+                paths:
+                  '/droids/{id}':
+                    get:
+                      description: Returns a Droid
+              
+          
+              
     get:
       description: Shows API. Supports conneg.
       operationId: getAPI
