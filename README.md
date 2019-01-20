@@ -44,23 +44,25 @@ $ npm install
 $ npm start
 ```
 
+### Trying it out
 And in another terminal:
 ```
-$ open http://localhost:3000/apiql/api-description
+$ export $APIQL_HOST=http://localhost:3000
+$ open $APIQL_HOST/apiql/api-description
 $ cd path/to/apiql-express/root
 $ curl --header "Content-Type: application/openapi+yaml" \
     --request PUT \
     --data "$(cat examples/star-wars-api.yml)" \
-    http://localhost:3000/apiql/apis/my-api
-$ curl --header "Accept: application/openapi+yaml" http://localhost:3000/apiql/apis/my-api
-$ curl --header "Accept: application/openapi+json" http://localhost:3000/apiql/apis/my-api
-$ open http://localhost:3000/apiql/apis/my-api
-$ curl localhost:3000/droids/2000
+    $APIQL_HOST/apiql/apis/my-api
+$ curl --header "Accept: application/openapi+yaml" $APIQL_HOST/apiql/apis/my-api
+$ curl --header "Accept: application/openapi+json" $APIQL_HOST/apiql/apis/my-api
+$ open $APIQL_HOST/apiql/apis/my-api
+$ curl $APIQL_HOST/droids/2000
 ...
 $ curl --header "Content-Type: application/json" \
     --request POST \
     --data '{ "review": {"stars": 5, "commentary": "This is a great movie!" }}' \
-    http://localhost:3000/episodes/JEDI/reviews
+    $APIQL_HOST/episodes/JEDI/reviews
 ...
 ```
 
